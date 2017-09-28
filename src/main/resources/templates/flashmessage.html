@@ -1,0 +1,10 @@
+<div th:fragment="flash" th:if="${flash != null}" class="container">
+    <i class = "right material-icons">close</i>
+    <div th:classappend="${#strings.toLowerCase(flash-status)}" th:text="${flash.message}" class="flash"></div>
+</div>
+
+<!--Todo: Review what the # are!-->
+<!--To insert the fragment:-->
+<!--<div th:replace="nameofthehtml :: nameofthefragment "></div>-->
+
+

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta charset="utf-8"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge"/>
         <title>InstaTeam</title>
-        <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/site.css">
+        <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <link rel="stylesheet" href="/css/normalize.css"/>
+        <link rel="stylesheet" href="/css/site.css"/>
     </head>
     <body>
         <header>
@@ -27,20 +27,17 @@
         </nav>
         <section>
             <div class="container wrapper">
-                <form>
+                <form th:action="@{/roles/add}" method="post">
                     <h2>Manage Roles</h2>
                     <div>
                         <ul class="checkbox-list">
-                            <li><span class="primary">Developer</span></li>
-                            <li><span class="primary">Designer</span></li>
-                            <li><span class="primary">QA</span></li>
-                            <li><span class="primary">DevOps</span></li>
-                            <li><span class="primary">Copywriter</span></li>
+                            <li th:each="r : ${roles}"><span class="primary" th:text="${r.name}">Developer</span></li>
                         </ul>
                     </div>
-                    <div class="actions add-new-role">
-                        <input type="text" placeholder="New Role...">
-                        <a class="button" href="#">Add</a>
+                    <div class="actions add-new-role" th:object="${role}">
+                        <input type="text" placeholder="New Role..." th:field="*{name}"/>
+                        <button class="button" type="submit">Add</button>
+                        <!--<a class="button" href="javascript:$('form').submit();">Add</a>-->
                     </div>
                 </form>
             </div>

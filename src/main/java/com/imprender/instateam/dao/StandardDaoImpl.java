@@ -1,6 +1,7 @@
 package com.imprender.instateam.dao;
 
 import com.imprender.instateam.model.StandardModel;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ public class StandardDaoImpl implements StandarDao{
     public List<StandardModel> findAll() {
         Session session = sessionFactory.openSession();
         List<StandardModel> standards = session.createCriteria(StandardModel.class).list();
+
+
         session.close();
         return standards;
     }
